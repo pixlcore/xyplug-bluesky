@@ -1,0 +1,28 @@
+{
+	"name": "xyplug-bluesky",
+	"version": "1.0.0",
+	"private": true,
+	"description": "A BlueSky Plugin for use in the xyOps workflow automation system.",
+	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
+	"homepage": "https://github.com/pixlcore/xyplug-bluesky",
+	"license": "MIT",
+	"main": "index.js",
+	"bin": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pixlcore/xyplug-bluesky"
+	},
+	"bugs": {
+		"url": "https://github.com/pixlcore/xyplug-bluesky/issues"
+	},
+	"keywords": [
+		"xyops",
+		"bluesky",
+		"mcp"
+	],
+	"dependencies": {
+		"json-in": "^1.0.0",
+		"pixl-tools": "^1.1.14",
+		"@modelcontextprotocol/sdk": "^1.19.1"
+	}
+}

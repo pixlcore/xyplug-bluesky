@@ -1,0 +1,16 @@
+{
+	"title": "Bluesky Social",
+	"description": "Access your Bluesky social profile, read your timeline, make posts, leave likes, and more.",
+	"repo": "pixlcore/xyplug-bluesky",
+	"version": "v1.0.0",
+	"image": "https://raw.githubusercontent.com/pixlcore/xyplug-bluesky/refs/heads/main/bluesky.png",
+	"type": "event",
+	"license": "MIT",
+	"tags": ["bluesky", "social", "mcp"],
+	"command": "npx github:pixlcore/xyplug-bluesky#v1.0.0",
+	"requires": [ "npx", "uvx", "git" ],
+	"env": { 
+		"BLUESKY_IDENTIFIER": "Your Bluesky identifier, e.g. `your-handle.bsky.social`.", 
+		"BLUESKY_APP_PASSWORD": "Your Bluesky App Password, which you can obtain [here](https://bsky.app/settings/app-passwords)." 
+	}
+}
