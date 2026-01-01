@@ -8,13 +8,9 @@
 			"data": {
 				"id": "pmjucch6qt8jan6t",
 				"title": "Bluesky Social",
-				"marketplace": {
-					"id": "pixlcore/xyplug-bluesky",
-					"version": "1.0.2"
-				},
 				"enabled": true,
 				"type": "event",
-				"command": "npx -y github:pixlcore/xyplug-bluesky#v1.0.2",
+				"command": "npx -y github:pixlcore/xyplug-bluesky#v1.0.3",
 				"script": "",
 				"groups": [],
 				"format": "",
