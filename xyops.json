@@ -1,16 +1,709 @@
 {
-	"title": "Bluesky Social",
-	"description": "Access your Bluesky social profile, read your timeline, make posts, leave likes, and more.",
-	"repo": "pixlcore/xyplug-bluesky",
-	"version": "v1.0.1",
-	"image": "https://raw.githubusercontent.com/pixlcore/xyplug-bluesky/refs/heads/main/bluesky.png",
-	"type": "event",
-	"license": "MIT",
-	"tags": ["bluesky", "social", "mcp"],
-	"command": "npx -y github:pixlcore/xyplug-bluesky#v1.0.1",
-	"requires": [ "npx", "uvx", "git" ],
-	"env": { 
-		"BLUESKY_IDENTIFIER": "Your Bluesky identifier, e.g. `your-handle.bsky.social`.", 
-		"BLUESKY_APP_PASSWORD": "Your Bluesky App Password, which you can obtain [here](https://bsky.app/settings/app-passwords)." 
-	}
+	"type": "xypdf",
+	"description": "xyOps Portable Data Object",
+	"version": "1.0",
+	"items": [
+		{
+			"type": "plugin",
+			"data": {
+				"id": "pmjucch6qt8jan6t",
+				"title": "Bluesky Social",
+				"marketplace": {
+					"id": "pixlcore/xyplug-bluesky",
+					"version": "1.0.2"
+				},
+				"enabled": true,
+				"type": "event",
+				"command": "npx -y github:pixlcore/xyplug-bluesky#v1.0.2",
+				"script": "",
+				"groups": [],
+				"format": "",
+				"params": [
+					{
+						"id": "tool",
+						"title": "Tool Select",
+						"type": "toolset",
+						"caption": "",
+						"data": {
+							"tools": [
+								{
+									"id": "check_auth_status",
+									"title": "Check Auth Status",
+									"description": "Check if the current session is authenticated.",
+									"fields": []
+								},
+								{
+									"id": "get_profile",
+									"title": "Get Profile",
+									"description": "Get a user profile.",
+									"fields": [
+										{
+											"id": "handle",
+											"title": "Handle",
+											"type": "text",
+											"value": "",
+											"caption": "Optional handle to get profile for. If None, gets the authenticated user"
+										}
+									]
+								},
+								{
+									"id": "get_follows",
+									"title": "Get Follows",
+									"description": "Get users followed by an account.",
+									"fields": [
+										{
+											"id": "handle",
+											"title": "Handle",
+											"type": "text",
+											"value": "",
+											"caption": "Optional handle to get follows for. If None, gets the authenticated user"
+										},
+										{
+											"id": "limit",
+											"title": "Limit",
+											"type": "text",
+											"value": 50,
+											"caption": "Maximum number of results to return (1-100)",
+											"variant": "number"
+										},
+										{
+											"id": "cursor",
+											"title": "Cursor",
+											"type": "text",
+											"value": "",
+											"caption": "Optional pagination cursor"
+										}
+									]
+								},
+								{
+									"id": "get_followers",
+									"title": "Get Followers",
+									"description": "Get users who follow an account.",
+									"fields": [
+										{
+											"id": "handle",
+											"title": "Handle",
+											"type": "text",
+											"value": "",
+											"caption": "Optional handle to get followers for. If None, gets the authenticated user"
+										},
+										{
+											"id": "limit",
+											"title": "Limit",
+											"type": "text",
+											"value": 50,
+											"caption": "Maximum number of results to return (1-100)",
+											"variant": "number"
+										},
+										{
+											"id": "cursor",
+											"title": "Cursor",
+											"type": "text",
+											"value": "",
+											"caption": "Optional pagination cursor"
+										}
+									]
+								},
+								{
+									"id": "like_post",
+									"title": "Like Post",
+									"description": "Like a post.",
+									"fields": [
+										{
+											"id": "uri",
+											"title": "Uri",
+											"type": "text",
+											"value": "",
+											"caption": "URI of the post to like",
+											"required": true
+										},
+										{
+											"id": "cid",
+											"title": "Cid",
+											"type": "text",
+											"value": "",
+											"caption": "CID of the post to like",
+											"required": true
+										}
+									]
+								},
+								{
+									"id": "unlike_post",
+									"title": "Unlike Post",
+									"description": "Unlike a previously liked post.",
+									"fields": [
+										{
+											"id": "like_uri",
+											"title": "Like Uri",
+											"type": "text",
+											"value": "",
+											"caption": "URI of the like.",
+											"required": true
+										}
+									]
+								},
+								{
+									"id": "send_post",
+									"title": "Send Post",
+									"description": "Send a post to Bluesky.",
+									"fields": [
+										{
+											"id": "text",
+											"title": "Text",
+											"type": "textarea",
+											"value": "",
+											"caption": "Text content of the post",
+											"required": true
+										},
+										{
+											"id": "profile_identify",
+											"title": "Profile Identify",
+											"type": "text",
+											"value": "",
+											"caption": "Optional handle or DID. Where to send post. If not provided, sends to current profile"
+										},
+										{
+											"id": "reply_to",
+											"title": "Reply To",
+											"type": "json",
+											"value": {},
+											"caption": "Optional reply reference with 'root' and 'parent' containing 'uri' and 'cid'"
+										},
+										{
+											"id": "embed",
+											"title": "Embed",
+											"type": "json",
+											"value": {},
+											"caption": "Optional embed object (images, external links, records, or video)"
+										},
+										{
+											"id": "langs",
+											"title": "Langs",
+											"type": "json",
+											"value": [],
+											"caption": "Optional list of language codes used in the post (defaults to ['en'])"
+										},
+										{
+											"id": "facets",
+											"title": "Facets",
+											"type": "json",
+											"value": [],
+											"caption": "Optional list of rich text facets (mentions, links, etc.)"
+										}
+									]
+								},
+								{
+									"id": "repost",
+									"title": "Repost",
+									"description": "Repost another user's post.",
+									"fields": [
+										{
+											"id": "uri",
+											"title": "Uri",
+											"type": "text",
+											"value": "",
+											"caption": "URI of the post to repost",
+											"required": true
+										},
+										{
+											"id": "cid",
+											"title": "Cid",
+											"type": "text",
+											"value": "",
+											"caption": "CID of the post to repost",
+											"required": true
+										}
+									]
+								},
+								{
+									"id": "unrepost",
+									"title": "Unrepost",
+									"description": "Remove a repost of another user's post.",
+									"fields": [
+										{
+											"id": "repost_uri",
+											"title": "Repost Uri",
+											"type": "text",
+											"value": "",
+											"caption": "URI of the repost to remove",
+											"required": true
+										}
+									]
+								},
+								{
+									"id": "get_likes",
+									"title": "Get Likes",
+									"description": "Get likes for a post.",
+									"fields": [
+										{
+											"id": "uri",
+											"title": "Uri",
+											"type": "text",
+											"value": "",
+											"caption": "URI of the post to get likes for",
+											"required": true
+										},
+										{
+											"id": "cid",
+											"title": "Cid",
+											"type": "text",
+											"value": "",
+											"caption": "Optional CID of the post (not strictly required)"
+										},
+										{
+											"id": "limit",
+											"title": "Limit",
+											"type": "text",
+											"value": 50,
+											"caption": "Maximum number of results to return (1-100)",
+											"variant": "number"
+										},
+										{
+											"id": "cursor",
+											"title": "Cursor",
+											"type": "text",
+											"value": "",
+											"caption": "Optional pagination cursor"
+										}
+									]
+								},
+								{
+									"id": "get_reposted_by",
+									"title": "Get Reposted By",
+									"description": "Get users who reposted a post.",
+									"fields": [
+										{
+											"id": "uri",
+											"title": "Uri",
+											"type": "text",
+											"value": "",
+											"caption": "URI of the post to get reposts for",
+											"required": true
+										},
+										{
+											"id": "cid",
+											"title": "Cid",
+											"type": "text",
+											"value": "",
+											"caption": "Optional CID of the post (not strictly required)"
+										},
+										{
+											"id": "limit",
+											"title": "Limit",
+											"type": "text",
+											"value": 50,
+											"caption": "Maximum number of results to return (1-100)",
+											"variant": "number"
+										},
+										{
+											"id": "cursor",
+											"title": "Cursor",
+											"type": "text",
+											"value": "",
+											"caption": "Optional pagination cursor"
+										}
+									]
+								},
+								{
+									"id": "get_post",
+									"title": "Get Post",
+									"description": "Get a specific post.",
+									"fields": [
+										{
+											"id": "post_rkey",
+											"title": "Post Rkey",
+											"type": "text",
+											"value": "",
+											"caption": "The record key of the post",
+											"required": true
+										},
+										{
+											"id": "profile_identify",
+											"title": "Profile Identify",
+											"type": "text",
+											"value": "",
+											"caption": "Handle or DID of the post author"
+										},
+										{
+											"id": "cid",
+											"title": "Cid",
+											"type": "text",
+											"value": "",
+											"caption": "Optional CID of the post"
+										}
+									]
+								},
+								{
+									"id": "get_posts",
+									"title": "Get Posts",
+									"description": "Get multiple posts by their URIs.",
+									"fields": [
+										{
+											"id": "uris",
+											"title": "Uris",
+											"type": "json",
+											"value": [],
+											"caption": "List of post URIs to retrieve",
+											"required": true
+										}
+									]
+								},
+								{
+									"id": "get_timeline",
+									"title": "Get Timeline",
+									"description": "Get posts from your home timeline.",
+									"fields": [
+										{
+											"id": "algorithm",
+											"title": "Algorithm",
+											"type": "text",
+											"value": "",
+											"caption": "Optional algorithm to use for timeline"
+										},
+										{
+											"id": "cursor",
+											"title": "Cursor",
+											"type": "text",
+											"value": "",
+											"caption": "Optional pagination cursor"
+										},
+										{
+											"id": "limit",
+											"title": "Limit",
+											"type": "text",
+											"value": 0,
+											"caption": "Maximum number of results to return",
+											"variant": "number"
+										}
+									]
+								},
+								{
+									"id": "get_author_feed",
+									"title": "Get Author Feed",
+									"description": "Get posts from a specific user.",
+									"fields": [
+										{
+											"id": "actor",
+											"title": "Actor",
+											"type": "text",
+											"value": "",
+											"caption": "Handle or DID of the user",
+											"required": true
+										},
+										{
+											"id": "cursor",
+											"title": "Cursor",
+											"type": "text",
+											"value": "",
+											"caption": "Optional pagination cursor"
+										},
+										{
+											"id": "filter",
+											"title": "Filter",
+											"type": "text",
+											"value": "",
+											"caption": "Optional filter for post types"
+										},
+										{
+											"id": "limit",
+											"title": "Limit",
+											"type": "text",
+											"value": 0,
+											"caption": "Maximum number of results to return",
+											"variant": "number"
+										},
+										{
+											"id": "include_pins",
+											"title": "Include Pins",
+											"type": "checkbox",
+											"value": false,
+											"caption": "Whether to include pinned posts"
+										}
+									]
+								},
+								{
+									"id": "get_post_thread",
+									"title": "Get Post Thread",
+									"description": "Get a full conversation thread.",
+									"fields": [
+										{
+											"id": "uri",
+											"title": "Uri",
+											"type": "text",
+											"value": "",
+											"caption": "URI of the post to get thread for",
+											"required": true
+										},
+										{
+											"id": "depth",
+											"title": "Depth",
+											"type": "text",
+											"value": 0,
+											"caption": "How many levels of replies to include",
+											"variant": "number"
+										},
+										{
+											"id": "parent_height",
+											"title": "Parent Height",
+											"type": "text",
+											"value": 0,
+											"caption": "How many parent posts to include",
+											"variant": "number"
+										}
+									]
+								},
+								{
+									"id": "resolve_handle",
+									"title": "Resolve Handle",
+									"description": "Resolve a handle to a DID.",
+									"fields": [
+										{
+											"id": "handle",
+											"title": "Handle",
+											"type": "text",
+											"value": "",
+											"caption": "User handle to resolve (e.g. \"user.bsky.social\")",
+											"required": true
+										}
+									]
+								},
+								{
+									"id": "mute_user",
+									"title": "Mute User",
+									"description": "Mute a user.",
+									"fields": [
+										{
+											"id": "actor",
+											"title": "Actor",
+											"type": "text",
+											"value": "",
+											"caption": "Handle or DID of the user to mute",
+											"required": true
+										}
+									]
+								},
+								{
+									"id": "unmute_user",
+									"title": "Unmute User",
+									"description": "Unmute a previously muted user.",
+									"fields": [
+										{
+											"id": "actor",
+											"title": "Actor",
+											"type": "text",
+											"value": "",
+											"caption": "Handle or DID of the user to unmute",
+											"required": true
+										}
+									]
+								},
+								{
+									"id": "unfollow_user",
+									"title": "Unfollow User",
+									"description": "Unfollow a user.",
+									"fields": [
+										{
+											"id": "follow_uri",
+											"title": "Follow Uri",
+											"type": "text",
+											"value": "",
+											"caption": "URI of the follow record to delete",
+											"required": true
+										}
+									]
+								},
+								{
+									"id": "send_image",
+									"title": "Send Image",
+									"description": "Send a post with a single image.",
+									"fields": [
+										{
+											"id": "text",
+											"title": "Text",
+											"type": "text",
+											"value": "",
+											"caption": "Text content of the post",
+											"required": true
+										},
+										{
+											"id": "image_alt",
+											"title": "Image Alt",
+											"type": "text",
+											"value": "",
+											"caption": "Alternative text description for the image",
+											"required": true
+										},
+										{
+											"id": "profile_identify",
+											"title": "Profile Identify",
+											"type": "text",
+											"value": "",
+											"caption": "Optional handle or DID for the post author"
+										},
+										{
+											"id": "reply_to",
+											"title": "Reply To",
+											"type": "json",
+											"value": {},
+											"caption": "Optional reply information dict with keys uri and cid"
+										},
+										{
+											"id": "langs",
+											"title": "Langs",
+											"type": "json",
+											"value": [],
+											"caption": "Optional list of language codes"
+										},
+										{
+											"id": "facets",
+											"title": "Facets",
+											"type": "json",
+											"value": [],
+											"caption": "Optional list of facets (mentions, links, etc.)"
+										}
+									]
+								},
+								{
+									"id": "send_images",
+									"title": "Send Images",
+									"description": "Send a post with multiple images (up to 4).",
+									"fields": [
+										{
+											"id": "text",
+											"title": "Text",
+											"type": "text",
+											"value": "",
+											"caption": "Text content of the post",
+											"required": true
+										},
+										{
+											"id": "image_alts",
+											"title": "Image Alts",
+											"type": "json",
+											"value": [],
+											"caption": "Optional list of alt text for each image"
+										},
+										{
+											"id": "profile_identify",
+											"title": "Profile Identify",
+											"type": "text",
+											"value": "",
+											"caption": "Optional handle or DID for the post author"
+										},
+										{
+											"id": "reply_to",
+											"title": "Reply To",
+											"type": "json",
+											"value": {},
+											"caption": "Optional reply information dict with keys uri and cid"
+										},
+										{
+											"id": "langs",
+											"title": "Langs",
+											"type": "json",
+											"value": [],
+											"caption": "Optional list of language codes"
+										},
+										{
+											"id": "facets",
+											"title": "Facets",
+											"type": "json",
+											"value": [],
+											"caption": "Optional list of facets (mentions, links, etc.)"
+										}
+									]
+								},
+								{
+									"id": "send_video",
+									"title": "Send Video",
+									"description": "Send a post with a video.",
+									"fields": [
+										{
+											"id": "text",
+											"title": "Text",
+											"type": "text",
+											"value": "",
+											"caption": "Text content of the post",
+											"required": true
+										},
+										{
+											"id": "video_alt",
+											"title": "Video Alt",
+											"type": "text",
+											"value": "",
+											"caption": "Optional alternative text description for the video"
+										},
+										{
+											"id": "profile_identify",
+											"title": "Profile Identify",
+											"type": "text",
+											"value": "",
+											"caption": "Optional handle or DID for the post author"
+										},
+										{
+											"id": "reply_to",
+											"title": "Reply To",
+											"type": "json",
+											"value": {},
+											"caption": "Optional reply information dict with keys uri and cid"
+										},
+										{
+											"id": "langs",
+											"title": "Langs",
+											"type": "json",
+											"value": [],
+											"caption": "Optional list of language codes"
+										},
+										{
+											"id": "facets",
+											"title": "Facets",
+											"type": "json",
+											"value": [],
+											"caption": "Optional list of facets (mentions, links, etc.)"
+										}
+									]
+								},
+								{
+									"id": "delete_post",
+									"title": "Delete Post",
+									"description": "Delete a post created by the authenticated user.",
+									"fields": [
+										{
+											"id": "uri",
+											"title": "Uri",
+											"type": "text",
+											"value": "",
+											"caption": "URI of the post to delete",
+											"required": true
+										}
+									]
+								},
+								{
+									"id": "follow_user",
+									"title": "Follow User",
+									"description": "Follow a user.",
+									"fields": [
+										{
+											"id": "handle",
+											"title": "Handle",
+											"type": "text",
+											"value": "",
+											"caption": "Handle of the user to follow",
+											"required": true
+										}
+									]
+								}
+							]
+						}
+					}
+				],
+				"kill": "parent",
+				"runner": false,
+				"notes": "Access your Bluesky social profile, read your timeline, make posts, leave likes, and more.",
+				"icon": "butterfly",
+				"uid": "",
+				"gid": ""
+			}
+		}
+	]
 }

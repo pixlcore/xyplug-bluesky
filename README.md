@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/pixlcore/xyplug-bluesky/refs/heads/main/bluesky.png" height="128" alt="Bluesky"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/pixlcore/xyplug-bluesky/refs/heads/main/logo.png" height="128" alt="Bluesky"/></p>
 <h1 align="center">Bluesky Social Plugin</h1>
 
 A Bluesky event plugin for the [xyOps Workflow Automation System](https://xyops.io). This package is essentially a wrapper that launches the Bluesky MCP server and exposes its tools to xyOps jobs.

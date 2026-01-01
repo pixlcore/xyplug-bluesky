@@ -1,6 +1,6 @@
 {
 	"name": "xyplug-bluesky",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"private": true,
 	"description": "A BlueSky Plugin for use in the xyOps workflow automation system.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
