@@ -10,7 +10,7 @@
 				"title": "Bluesky Social",
 				"enabled": true,
 				"type": "event",
-				"command": "npx -y github:pixlcore/xyplug-bluesky#v1.0.3",
+				"command": "npx -y github:pixlcore/xyplug-bluesky#v1.0.4",
 				"script": "",
 				"groups": [],
 				"format": "",
@@ -384,7 +384,7 @@
 											"type": "text",
 											"value": "",
 											"caption": "Handle or DID of the user",
-											"required": true
+											"required": false
 										},
 										{
 											"id": "cursor",
@@ -516,7 +516,7 @@
 										{
 											"id": "text",
 											"title": "Text",
-											"type": "text",
+											"type": "textarea",
 											"value": "",
 											"caption": "Text content of the post",
 											"required": true
@@ -567,7 +567,7 @@
 										{
 											"id": "text",
 											"title": "Text",
-											"type": "text",
+											"type": "textarea",
 											"value": "",
 											"caption": "Text content of the post",
 											"required": true
@@ -617,7 +617,7 @@
 										{
 											"id": "text",
 											"title": "Text",
-											"type": "text",
+											"type": "textarea",
 											"value": "",
 											"caption": "Text content of the post",
 											"required": true
