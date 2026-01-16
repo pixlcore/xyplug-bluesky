@@ -113,8 +113,16 @@ function buildXrpcClient(serviceUrl, accessJwt) {
 		try { data = text ? JSON.parse(text) : null; }
 		catch (err) { data = { raw: text }; }
 		if (!res.ok) {
-			const detail = text || res.statusText;
-			throw new Error(`XRPC ${nsid} failed (${res.status}): ${detail}`);
+			if (data.message) {
+				var err = new Error(data.message);
+				err.message = data.message;
+				err.code = data.error || res.status;
+				throw err;
+			}
+			else {
+				const detail = text || res.statusText;
+				throw new Error(`XRPC ${nsid} failed (${res.status}): ${detail}`);
+			}
 		}
 		return data;
 	};
@@ -613,14 +621,11 @@ function coerceOptionalPositive(value) {
 
 			default:
 				throw new Error(`Unsupported tool: ${tool}`);
-		}
+		} // switch tool
+		
+		writeXY({ xy: 1, code: 0, description: result.message || 'Success', data: result });
 	}
 	catch (err) {
-		result = {
-			status: 'error',
-			message: err.message || String(err)
-		};
+		writeXY({ xy: 1, code: err.code || 1, description: err.message || String(err) });
 	}
-
-	writeXY({ xy: 1, code: 0, data: result });
 })();

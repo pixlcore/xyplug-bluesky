@@ -40,11 +40,11 @@ Notes on common fields:
 - `cursor` is an opaque pagination token returned by Bluesky. Treat it as a string and pass it back verbatim to fetch the next page. Leave it empty for the first page.
 - `limit` is the maximum number of items to return. Where applicable, Bluesky accepts `1-100`. If you leave it empty or `0`, the server default is used (often 50).
 
-### `check_auth_status`
+### Check Auth Status
 
 Check if the current session is authenticated.  No parameters are used.
 
-### `get_profile`
+### Get Profile
 
 Get a user profile. If you omit the handle, the authenticated user is used.
 
@@ -52,7 +52,7 @@ Get a user profile. If you omit the handle, the authenticated user is used.
 |-----------|------|----------|-------------|---------|
 | `handle` | text | No | Handle or DID to fetch (e.g. `user.bsky.social` or `did:plc:...`). | Current user |
 
-### `get_follows`
+### Get Follows
 
 Get users followed by an account.
 
@@ -62,7 +62,7 @@ Get users followed by an account.
 | `limit` | number | No | Max results to return (1-100). | 50 |
 | `cursor` | text | No | Pagination cursor returned from a previous call. | - |
 
-### `get_followers`
+### Get Followers
 
 Get users who follow an account.
 
@@ -72,7 +72,7 @@ Get users who follow an account.
 | `limit` | number | No | Max results to return (1-100). | 50 |
 | `cursor` | text | No | Pagination cursor returned from a previous call. | - |
 
-### `like_post`
+### Like Post
 
 Like a post. Requires the target post URI and CID (both are returned by Bluesky APIs).
 
@@ -81,7 +81,7 @@ Like a post. Requires the target post URI and CID (both are returned by Bluesky 
 | `uri` | text | Yes | Post URI to like (e.g. `at://did:.../app.bsky.feed.post/...`). | - |
 | `cid` | text | Yes | Post CID to like. | - |
 
-### `unlike_post`
+### Unlike Post
 
 Unlike a previously liked post. Use the `like_uri` from the `like_post` response.
 
@@ -89,7 +89,7 @@ Unlike a previously liked post. Use the `like_uri` from the `like_post` response
 |-----------|------|----------|-------------|---------|
 | `like_uri` | text | Yes | Like record URI to delete. | - |
 
-### `send_post`
+### Send Post
 
 Send a text post. Optional fields allow replies, embeds, languages, and facets.
 
@@ -102,7 +102,7 @@ Send a text post. Optional fields allow replies, embeds, languages, and facets.
 | `langs` | json | No | List of BCP-47 language codes (e.g. `["en"]`). | `["en"]` |
 | `facets` | json | No | Rich-text facets (mentions, links, hashtags). | - |
 
-### `repost`
+### Repost
 
 Repost another user's post.
 
@@ -111,7 +111,7 @@ Repost another user's post.
 | `uri` | text | Yes | Post URI to repost. | - |
 | `cid` | text | Yes | Post CID to repost. | - |
 
-### `unrepost`
+### Unrepost
 
 Remove a repost you previously created. Use the `repost_uri` from the `repost` response.
 
@@ -119,7 +119,7 @@ Remove a repost you previously created. Use the `repost_uri` from the `repost` r
 |-----------|------|----------|-------------|---------|
 | `repost_uri` | text | Yes | Repost record URI to delete. | - |
 
-### `get_likes`
+### Get Likes
 
 Get likes for a post.
 
@@ -130,7 +130,7 @@ Get likes for a post.
 | `limit` | number | No | Max results to return (1-100). | 50 |
 | `cursor` | text | No | Pagination cursor returned from a previous call. | - |
 
-### `get_reposted_by`
+### Get Reposted By
 
 Get users who reposted a post.
 
@@ -141,7 +141,7 @@ Get users who reposted a post.
 | `limit` | number | No | Max results to return (1-100). | 50 |
 | `cursor` | text | No | Pagination cursor returned from a previous call. | - |
 
-### `get_post`
+### Get Post
 
 Get a specific post by record key and author.
 
@@ -151,7 +151,7 @@ Get a specific post by record key and author.
 | `profile_identify` | text | No | Handle or DID of the post author. | Current user |
 | `cid` | text | No | Optional CID of the post. | - |
 
-### `get_posts`
+### Get Posts
 
 Get multiple posts by their URIs.
 
@@ -159,7 +159,7 @@ Get multiple posts by their URIs.
 |-----------|------|----------|-------------|---------|
 | `uris` | json | Yes | Array of post URIs to retrieve. | - |
 
-### `get_timeline`
+### Get Timeline
 
 Get posts from your home timeline.
 
@@ -169,7 +169,7 @@ Get posts from your home timeline.
 | `cursor` | text | No | Pagination cursor returned from a previous call (opaque string). | - |
 | `limit` | number | No | Max results to return (1-100). | Server default |
 
-### `get_author_feed`
+### Get Author Feed
 
 Get posts from a specific user (or the authenticated user if omitted).
 
@@ -181,7 +181,7 @@ Get posts from a specific user (or the authenticated user if omitted).
 | `limit` | number | No | Max results to return (1-100). | Server default |
 | `include_pins` | checkbox | No | Include pinned posts when available. | false |
 
-### `get_post_thread`
+### Get Post Thread
 
 Get a full conversation thread for a post.
 
@@ -191,7 +191,7 @@ Get a full conversation thread for a post.
 | `depth` | number | No | How many reply levels to include. Use `0` or empty for server default. | Server default |
 | `parent_height` | number | No | How many parent posts to include. Use `0` or empty for server default. | Server default |
 
-### `resolve_handle`
+### Resolve Handle
 
 Resolve a handle to a DID.
 
@@ -199,7 +199,7 @@ Resolve a handle to a DID.
 |-----------|------|----------|-------------|---------|
 | `handle` | text | Yes | Handle to resolve (e.g. `user.bsky.social`). | - |
 
-### `mute_user`
+### Mute User
 
 Mute a user by handle or DID.
 
@@ -207,7 +207,7 @@ Mute a user by handle or DID.
 |-----------|------|----------|-------------|---------|
 | `actor` | text | Yes | Handle or DID of the user to mute. | - |
 
-### `unmute_user`
+### Unmute User
 
 Unmute a previously muted user.
 
@@ -215,7 +215,7 @@ Unmute a previously muted user.
 |-----------|------|----------|-------------|---------|
 | `actor` | text | Yes | Handle or DID of the user to unmute. | - |
 
-### `unfollow_user`
+### Unfollow User
 
 Unfollow a user. Use the `follow_uri` from `follow_user`.
 
@@ -223,7 +223,7 @@ Unfollow a user. Use the `follow_uri` from `follow_user`.
 |-----------|------|----------|-------------|---------|
 | `follow_uri` | text | Yes | Follow record URI to delete. | - |
 
-### `send_image`
+### Send Image
 
 Send a post with a single image. The image file is taken from the job input (first file in `input.files`).
 
@@ -236,7 +236,7 @@ Send a post with a single image. The image file is taken from the job input (fir
 | `langs` | json | No | List of BCP-47 language codes. | `["en"]` |
 | `facets` | json | No | Rich-text facets (mentions, links, hashtags). | - |
 
-### `send_images`
+### Send Images
 
 Send a post with multiple images (up to 4). Images are taken from the job input files in order.
 
@@ -249,7 +249,7 @@ Send a post with multiple images (up to 4). Images are taken from the job input 
 | `langs` | json | No | List of BCP-47 language codes. | `["en"]` |
 | `facets` | json | No | Rich-text facets (mentions, links, hashtags). | - |
 
-### `send_video`
+### Send Video
 
 Send a post with a video. The video file is taken from the job input (first file in `input.files`).
 
@@ -262,7 +262,7 @@ Send a post with a video. The video file is taken from the job input (first file
 | `langs` | json | No | List of BCP-47 language codes. | `["en"]` |
 | `facets` | json | No | Rich-text facets (mentions, links, hashtags). | - |
 
-### `delete_post`
+### Delete Post
 
 Delete a post created by the authenticated user.
 
@@ -270,7 +270,7 @@ Delete a post created by the authenticated user.
 |-----------|------|----------|-------------|---------|
 | `uri` | text | Yes | Post URI to delete. | - |
 
-### `follow_user`
+### Follow User
 
 Follow a user by handle. The handle is resolved to a DID automatically.
 
