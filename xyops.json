@@ -10,7 +10,7 @@
 				"title": "Bluesky Social",
 				"enabled": true,
 				"type": "event",
-				"command": "npx -y github:pixlcore/xyplug-bluesky#v1.0.5",
+				"command": "npx -y github:pixlcore/xyplug-bluesky#v1.0.6",
 				"script": "",
 				"groups": [],
 				"format": "",
@@ -107,7 +107,7 @@
 									"fields": [
 										{
 											"id": "uri",
-											"title": "Uri",
+											"title": "URI",
 											"type": "text",
 											"value": "",
 											"caption": "URI of the post to like",
@@ -115,7 +115,7 @@
 										},
 										{
 											"id": "cid",
-											"title": "Cid",
+											"title": "CID",
 											"type": "text",
 											"value": "",
 											"caption": "CID of the post to like",
@@ -130,7 +130,7 @@
 									"fields": [
 										{
 											"id": "like_uri",
-											"title": "Like Uri",
+											"title": "Like URI",
 											"type": "text",
 											"value": "",
 											"caption": "URI of the like.",
@@ -153,7 +153,7 @@
 										},
 										{
 											"id": "profile_identify",
-											"title": "Profile Identify",
+											"title": "Profile Identifier",
 											"type": "text",
 											"value": "",
 											"caption": "Optional handle or DID. Where to send post. If not provided, sends to current profile"
@@ -174,7 +174,7 @@
 										},
 										{
 											"id": "langs",
-											"title": "Langs",
+											"title": "Languages",
 											"type": "json",
 											"value": [],
 											"caption": "Optional list of language codes used in the post (defaults to ['en'])"
@@ -195,7 +195,7 @@
 									"fields": [
 										{
 											"id": "uri",
-											"title": "Uri",
+											"title": "URI",
 											"type": "text",
 											"value": "",
 											"caption": "URI of the post to repost",
@@ -203,7 +203,7 @@
 										},
 										{
 											"id": "cid",
-											"title": "Cid",
+											"title": "CID",
 											"type": "text",
 											"value": "",
 											"caption": "CID of the post to repost",
@@ -218,7 +218,7 @@
 									"fields": [
 										{
 											"id": "repost_uri",
-											"title": "Repost Uri",
+											"title": "Repost URI",
 											"type": "text",
 											"value": "",
 											"caption": "URI of the repost to remove",
@@ -233,7 +233,7 @@
 									"fields": [
 										{
 											"id": "uri",
-											"title": "Uri",
+											"title": "URI",
 											"type": "text",
 											"value": "",
 											"caption": "URI of the post to get likes for",
@@ -241,7 +241,7 @@
 										},
 										{
 											"id": "cid",
-											"title": "Cid",
+											"title": "CID",
 											"type": "text",
 											"value": "",
 											"caption": "Optional CID of the post (not strictly required)"
@@ -270,7 +270,7 @@
 									"fields": [
 										{
 											"id": "uri",
-											"title": "Uri",
+											"title": "URI",
 											"type": "text",
 											"value": "",
 											"caption": "URI of the post to get reposts for",
@@ -278,7 +278,7 @@
 										},
 										{
 											"id": "cid",
-											"title": "Cid",
+											"title": "CID",
 											"type": "text",
 											"value": "",
 											"caption": "Optional CID of the post (not strictly required)"
@@ -307,7 +307,7 @@
 									"fields": [
 										{
 											"id": "post_rkey",
-											"title": "Post Rkey",
+											"title": "Post Record Key",
 											"type": "text",
 											"value": "",
 											"caption": "The record key of the post",
@@ -315,14 +315,14 @@
 										},
 										{
 											"id": "profile_identify",
-											"title": "Profile Identify",
+											"title": "Profile Identifier",
 											"type": "text",
 											"value": "",
 											"caption": "Handle or DID of the post author"
 										},
 										{
 											"id": "cid",
-											"title": "Cid",
+											"title": "CID",
 											"type": "text",
 											"value": "",
 											"caption": "Optional CID of the post"
@@ -336,7 +336,7 @@
 									"fields": [
 										{
 											"id": "uris",
-											"title": "Uris",
+											"title": "URIs",
 											"type": "json",
 											"value": [],
 											"caption": "List of post URIs to retrieve",
@@ -424,7 +424,7 @@
 									"fields": [
 										{
 											"id": "uri",
-											"title": "Uri",
+											"title": "URI",
 											"type": "text",
 											"value": "",
 											"caption": "URI of the post to get thread for",
@@ -500,7 +500,7 @@
 									"fields": [
 										{
 											"id": "follow_uri",
-											"title": "Follow Uri",
+											"title": "Follow URI",
 											"type": "text",
 											"value": "",
 											"caption": "URI of the follow record to delete",
@@ -531,7 +531,7 @@
 										},
 										{
 											"id": "profile_identify",
-											"title": "Profile Identify",
+											"title": "Profile Identifier",
 											"type": "text",
 											"value": "",
 											"caption": "Optional handle or DID for the post author"
@@ -545,7 +545,7 @@
 										},
 										{
 											"id": "langs",
-											"title": "Langs",
+											"title": "Languages",
 											"type": "json",
 											"value": [],
 											"caption": "Optional list of language codes"
@@ -581,7 +581,7 @@
 										},
 										{
 											"id": "profile_identify",
-											"title": "Profile Identify",
+											"title": "Profile Identifier",
 											"type": "text",
 											"value": "",
 											"caption": "Optional handle or DID for the post author"
@@ -595,7 +595,7 @@
 										},
 										{
 											"id": "langs",
-											"title": "Langs",
+											"title": "Languages",
 											"type": "json",
 											"value": [],
 											"caption": "Optional list of language codes"
@@ -631,7 +631,7 @@
 										},
 										{
 											"id": "profile_identify",
-											"title": "Profile Identify",
+											"title": "Profile Identifier",
 											"type": "text",
 											"value": "",
 											"caption": "Optional handle or DID for the post author"
@@ -645,7 +645,7 @@
 										},
 										{
 											"id": "langs",
-											"title": "Langs",
+											"title": "Languages",
 											"type": "json",
 											"value": [],
 											"caption": "Optional list of language codes"
@@ -666,7 +666,7 @@
 									"fields": [
 										{
 											"id": "uri",
-											"title": "Uri",
+											"title": "URI",
 											"type": "text",
 											"value": "",
 											"caption": "URI of the post to delete",
