@@ -10,7 +10,7 @@
 				"title": "Bluesky Social",
 				"enabled": true,
 				"type": "event",
-				"command": "npx -y github:pixlcore/xyplug-bluesky#v1.0.6",
+				"command": "npx -y @pixlcore/xyplug-bluesky@1.0.7",
 				"script": "",
 				"groups": [],
 				"format": "",

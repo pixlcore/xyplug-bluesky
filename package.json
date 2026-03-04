@@ -1,7 +1,6 @@
 {
-	"name": "xyplug-bluesky",
-	"version": "1.0.6",
-	"private": true,
+	"name": "@pixlcore/xyplug-bluesky",
+	"version": "1.0.7",
 	"description": "A BlueSky Plugin for use in the xyOps workflow automation system.",
 	"author": "Joseph Huckaby <jhuckaby@pixlcore.com>",
 	"license": "MIT",
@@ -21,5 +20,8 @@
 		"bluesky",
 		"social",
 		"atproto"
-	]
+	],
+	"publishConfig": {
+		"access": "public"
+	}
 }
